@@ -29,3 +29,12 @@
 ;;(global-set-key (kbd "TAB") #'company-indent-or-complete-common)
 (bind-key* (kbd "M-p") 'scroll-down)
 (bind-key* (kbd "M-n") 'scroll-up)
+
+;; lsp-mode
+(require 'lsp)
+(require 'lsp-mode)
+(require 'lsp-ui)
+(add-hook 'rust-mode-hook #'lsp)
+
+(require 'company-lsp)
+(push 'company-lsp company-backends)
