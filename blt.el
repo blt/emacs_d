@@ -35,6 +35,3 @@
 (require 'lsp-mode)
 (require 'lsp-ui)
 (add-hook 'rust-mode-hook #'lsp)
-
-(require 'company-lsp)
-(push 'company-lsp company-backends)

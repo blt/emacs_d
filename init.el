@@ -28,7 +28,7 @@
  '(menu-bar-mode nil)
  '(package-selected-packages
    (quote
-    (company-lsp flycheck yaml-mode ripgrep ido-completing-read+ cargo lsp-rust lsp-ui lsp-mode smex markdown-mode company bind-key)))
+    (rust-mode company-lsp flycheck yaml-mode ripgrep ido-completing-read+ cargo lsp-rust lsp-ui lsp-mode smex markdown-mode company bind-key)))
  '(rust-format-on-save t t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

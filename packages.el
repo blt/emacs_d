@@ -1,3 +1,5 @@
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+(add-to-list 'package-archives '("elpa" .  "https://elpa.gnu.org/packages/"))
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
 
@@ -5,14 +7,12 @@
        (packages
         '(
           company              ; Modular text completion framework
-          company-lsp          ;
           bind-key             ; A simple way to manage personal keybindings
           markdown-mode        ; Emacs Major mode for Markdown-formatted files
           smex                 ; smart M-x
           lsp-mode             ; Minor mode for interacting with Language Servers
           lsp-ui               ; UI modules for lsp-mode
           lsp-rust             ; Rust support for lsp-mode
-          company-lsp          ; completion
           rust-mode            ; It's a mode, for the Rust programming language
           cargo                ; Emacs Minor Mode for Cargo, Rust's Package Manager.
           ido-completing-read+ ; Use ido completion in every place sensible
