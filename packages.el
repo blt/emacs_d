@@ -19,6 +19,7 @@
           ripgrep              ; Front-end for ripgrep, a command line search tool
           yaml-mode            ; Major mode for editing YAML files
           rust-mode            ; Major mode for editing Rust files
+          yasnippet
          )))
   (ignore-errors ;; This package is only relevant for Mac OS X.
     (when (memq window-system '(mac ns))
