@@ -24,14 +24,14 @@
  '(lsp-modeline-diagnostics-enable nil)
  '(lsp-rust-all-features t)
  '(lsp-rust-clippy-preference "on")
- '(lsp-rust-server 'rls)
+ '(lsp-rust-server 'rust-analyzer)
  '(lsp-signature-auto-activate nil)
  '(lsp-ui-doc-enable nil)
  '(lsp-ui-flycheck-enable t)
  '(lsp-ui-sideline-enable nil)
  '(menu-bar-mode nil)
  '(package-selected-packages
-   '(magit auctex yasnippet rust-mode company-lsp flycheck yaml-mode ripgrep ido-completing-read+ cargo lsp-rust lsp-ui lsp-mode smex markdown-mode company bind-key))
+   '(company-terraform terraform-mode magit auctex yasnippet rust-mode company-lsp flycheck yaml-mode ripgrep ido-completing-read+ cargo lsp-rust lsp-ui lsp-mode smex markdown-mode company bind-key))
  '(rust-format-on-save t t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
