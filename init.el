@@ -80,7 +80,8 @@
   (bind-key* "M-n" 'scroll-up))
 
 ;; Git
-(use-package magit)
+(use-package magit
+  :hook (git-commit-mode . (lambda () (setq fill-column 72))))
 
 ;; Other modes
 (use-package yaml-mode)
