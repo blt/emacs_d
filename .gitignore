@@ -1,5 +1,12 @@
-autosave
-backup
+autosave/
+backup/
+eln-cache/
+straight/repos/
+straight/build/
+straight/build-cache.el
+straight/modified/
+transient/
+.lsp-session-v1
 smex-items
-elpa
 ido.last
+auto-save-list/

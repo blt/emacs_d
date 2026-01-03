@@ -1,10 +1,13 @@
 ;; -*- lexical-binding: t -*-
 
-;; Performance
-(setq gc-cons-threshold 500000000)
-(setq read-process-output-max (* 10 1024 1024))
+;;; Theme (must be before straight.el)
+(require 'package)
+(package-initialize)
+(load-file (expand-file-name "old-config/blt.el" user-emacs-directory))
+(custom-set-variables
+ '(custom-enabled-themes '(manoj-dark)))
 
-;; straight.el bootstrap
+;;; straight.el bootstrap
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -21,42 +24,53 @@
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
 
-(menu-bar-mode -1)
+;;; Performance
+(setq gc-cons-threshold 500000000)
+(setq read-process-output-max (* 10 1024 1024))
+
+;;; UI preferences
 (setq inhibit-startup-screen t)
+(menu-bar-mode -1)
 (show-paren-mode -1)
+
+;;; Mode-line (custom minimal format)
+(setq-default mode-line-format
+              '(mode-line-modified
+                " "
+                mode-line-buffer-identification
+                mode-line-position
+                mode-name
+                " "
+                mode-line-end-spaces))
+
+;;; Editing defaults
 (setq-default fill-column 80)
 (setq-default indent-tabs-mode nil)
 (setq create-lockfiles nil)
-
-;; Delete trailing whitespace on save
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-;; Backup/autosave directories
+;;; Backup/autosave
 (setq backup-directory-alist `((".*" . ,(expand-file-name "backup/" user-emacs-directory))))
 (setq auto-save-list-file-prefix (expand-file-name "autosave/" user-emacs-directory))
 (setq auto-save-file-name-transforms `((".*" ,(expand-file-name "autosave/" user-emacs-directory) t)))
 
-;; Mode-line
-(setq mode-line-format (list
-       mode-line-modified
-       " "
-       mode-line-buffer-identification
-       mode-line-position
-       mode-name
-       " "
-       mode-line-end-spaces))
-
-;; Completion
+;;; Completion - stock fido (replaces ido + smex)
 (fido-vertical-mode 1)
 
-;; Rust
+;;; Keybindings
+(use-package bind-key
+  :config
+  (bind-key* "M-p" 'scroll-down)
+  (bind-key* "M-n" 'scroll-up))
+
+;;; Rust
 (use-package rust-mode
   :straight (:host github :repo "rust-lang/rust-mode")
   :hook (rust-mode . eglot-ensure)
   :custom
   (rust-format-on-save t))
 
-;; Eglot
+;;; Eglot (built-in LSP) - configure rust-analyzer
 (use-package eglot
   :straight nil
   :custom
@@ -68,21 +82,11 @@
                               (:check (:command "clippy")
                                :procMacro (:enable t))))))
 
-;; Disable flymake margin
+;;; Disable flymake (removes left margin)
 (use-package flymake
   :straight nil
   :hook (eglot-managed-mode . (lambda () (flymake-mode -1))))
 
-;; Keybindings
-(use-package bind-key
-  :config
-  (bind-key* "M-p" 'scroll-down)
-  (bind-key* "M-n" 'scroll-up))
-
-;; Git
-(use-package magit)
-
-;; Other modes
+;;; Optional
 (use-package yaml-mode)
 (use-package markdown-mode)
-
