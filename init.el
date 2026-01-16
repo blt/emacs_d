@@ -79,9 +79,18 @@
   (bind-key* "M-p" 'scroll-down)
   (bind-key* "M-n" 'scroll-up))
 
+;; Fix for transient.el text-conversion-style issue in Emacs 30
+(defvar overriding-text-conversion-style nil)
+
 ;; Git
 (use-package magit
   :hook (git-commit-mode . (lambda () (setq fill-column 72))))
+
+;; Go
+(use-package go-mode
+  :hook (go-mode . eglot-ensure)
+  :config
+  (add-hook 'before-save-hook 'gofmt-before-save))
 
 ;; Other modes
 (use-package yaml-mode)
