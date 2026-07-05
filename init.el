@@ -96,3 +96,11 @@
 (use-package yaml-mode)
 (use-package markdown-mode)
 
+;; troutwine.us vault navigation (lives in the site repo: emacs/norton-mode.el).
+;; Auto-enables on markdown files under a directory containing `.obsidian'.
+(use-package norton-mode
+  :straight (norton-mode :type nil
+                         :local-repo "/home/blt/src/troutwine_us_words"
+                         :files ("emacs/norton-mode.el"))
+  :hook (markdown-mode . norton-mode-maybe-enable))
+
